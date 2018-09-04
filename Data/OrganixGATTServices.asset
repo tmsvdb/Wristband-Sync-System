@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6da9095c9321fe46b3c40056ecf184d, type: 3}
+  m_Name: OrganixGATTServices
+  m_EditorClassIdentifier: 
+  profiles:
+  - peripheralName: PR102
+    id: 0000FED0-494C-4F47-4943-544543480000
+    description: 0
+    characteristics:
+    - tag: 0
+      id: 0000FED1-494C-4F47-4943-544543480000
+    - tag: 1
+      id: 0000FED2-494C-4F47-4943-544543480000
+  - peripheralName: B002
+    id: 0000FED0-494C-4F47-4943-544543480000
+    description: 1
+    characteristics:
+    - tag: 0
+      id: 0000FED1-494C-4F47-4943-544543480000
+    - tag: 1
+      id: 0000FED2-494C-4F47-4943-544543480000
