@@ -27,7 +27,7 @@ public class BluetoothLEHardwareInterface
 		CBAttributePermissionsWriteEncryptionRequired = 0x08,
 	};
 
-	#if UNITY_IPHONE || UNITY_TVOS
+#if UNITY_IPHONE || UNITY_TVOS
 	[DllImport ("__Internal")]
 	private static extern void _iOSBluetoothLELog (string message);
 	
@@ -41,7 +41,7 @@ public class BluetoothLEHardwareInterface
 	private static extern void _iOSBluetoothLEPauseMessages (bool isPaused);
 	
 	[DllImport ("__Internal")]
-	private static extern void _iOSBluetoothLEScanForPeripheralsWithServices (string serviceUUIDsString, bool allowDuplicates, bool rssiOnly);
+	private static extern void _iOSBluetoothLEScanForPeripheralsWithServices (string serviceUUIDsString, bool allowDuplicates, bool rssiOnly, bool clearPeripheralList);
 	
 	[DllImport ("__Internal")]
 	private static extern void _iOSBluetoothLERetrieveListOfPeripheralsWithServices (string serviceUUIDsString);
@@ -191,6 +191,19 @@ public class BluetoothLEHardwareInterface
 			GameObject.Destroy(bluetoothLEReceiver);
 	}
 
+	public static void BluetoothEnable (bool enable)
+	{
+		if (!Application.isEditor)
+		{
+#if UNITY_IPHONE || UNITY_TVOS
+			//_iOSBluetoothLELog (message);
+#elif UNITY_ANDROID
+			if (_android != null)
+				_android.Call ("androidBluetoothEnable", enable);
+#endif
+		}
+	}
+
 	public static void PauseMessages (bool isPaused)
 	{
 		if (!Application.isEditor)
@@ -204,7 +217,7 @@ public class BluetoothLEHardwareInterface
 		}
 	}
 	
-	public static void ScanForPeripheralsWithServices (string[] serviceUUIDs, Action<string, string> action, Action<string, string, int, byte[]> actionAdvertisingInfo = null, bool rssiOnly = false)
+	public static void ScanForPeripheralsWithServices (string[] serviceUUIDs, Action<string, string> action, Action<string, string, int, byte[]> actionAdvertisingInfo = null, bool rssiOnly = false, bool clearPeripheralList = true, int recordType = 0xFF)
 	{
 		if (!Application.isEditor)
 		{
@@ -230,14 +243,14 @@ public class BluetoothLEHardwareInterface
 			}
 
 #if UNITY_IPHONE || UNITY_TVOS
-			_iOSBluetoothLEScanForPeripheralsWithServices (serviceUUIDsString, (actionAdvertisingInfo != null), rssiOnly);
+			_iOSBluetoothLEScanForPeripheralsWithServices (serviceUUIDsString, (actionAdvertisingInfo != null), rssiOnly, clearPeripheralList);
 #elif UNITY_ANDROID
 			if (_android != null)
 			{
 				if (serviceUUIDsString == null)
 					serviceUUIDsString = "";
 
-				_android.Call ("androidBluetoothScanForPeripheralsWithServices", serviceUUIDsString, rssiOnly);
+				_android.Call ("androidBluetoothScanForPeripheralsWithServices", serviceUUIDsString, rssiOnly, recordType);
 			}
 #endif
 		}
