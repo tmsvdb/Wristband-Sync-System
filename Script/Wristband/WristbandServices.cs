@@ -42,6 +42,16 @@ namespace Wristband {
     [System.Serializable]
     public class BoosthWristbandServices : IWristbandServices // : ScriptableObject
     {
+        public static WristbandProfile DebugProfile = new WristbandProfile(
+            "PR102", 
+            "0000FED0-494C-4F47-4943-544543480000", 
+            WristbandProfileType.Boosth_Kids, 
+            new List<WristbandCharacteristic>() {
+                new WristbandCharacteristic(WristbandCharacteristicTag.A, "0000FED1-494C-4F47-4943-544543480000"),
+                new WristbandCharacteristic(WristbandCharacteristicTag.B, "0000FED2-494C-4F47-4943-544543480000")
+            }
+        ); 
+
         private static WristbandProfile KidsProfile = new WristbandProfile(
             "PR102", 
             "0000FED0-494C-4F47-4943-544543480000", 

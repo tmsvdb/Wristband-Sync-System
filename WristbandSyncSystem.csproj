@@ -6,15 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <Reference Include="UnityEngine">
-        <HintPath>C:\Program Files\Unity_2017.3.0\Editor\Data\Managed\UnityEngine.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEditor">
-        <HintPath>C:\Program Files\Unity_2017.3.0\Editor\Data\Managed\UnityEditor.dll</HintPath>
-      </Reference>
-      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
-      <PackageReference Include="xunit" Version="2.2.0" />
-      <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
-    </ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="xunit" Version="2.2.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+  </ItemGroup>
 
 </Project>
