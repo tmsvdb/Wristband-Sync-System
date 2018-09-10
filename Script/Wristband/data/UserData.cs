@@ -33,6 +33,7 @@ namespace Wristband
             //return AtlasServicesManager.Instance.boosth.bodyData.height; 
         }
 
+        // distance in micrometers        
         public int DistancePerStep() {
             throw new NotImplementedException();
             //return AtlasServicesManager.Instance.boosth.bodyData.distance_per_step;

@@ -69,6 +69,7 @@ namespace Wristband {
         */
         public WristbandProfileType ConnectedProfileType { get { return connectedWristbandProfile.description; } }
         public StepsData GetSteps { get { return steps ; } }
+        public string[] DeviceList { get { return IsInitialized () ? bluetoothDeviceScript.DeviceList().ToArray() : new string[0]; } }
 
         /*
 
@@ -203,7 +204,8 @@ namespace Wristband {
             if (steps.stepsToday() > 10000000 && numRetries < 10)
             {
                 steps.Clear();
-                OnERROR(WristbandProtocolError.INVALID_NUMBER_OF_STEPS, "ReadCharacteristicsHandler :: Invalid number of steps recieved from wristband: " + steps.stepsToday());
+                //OnERROR(WristbandProtocolError.INVALID_NUMBER_OF_STEPS, "ReadCharacteristicsHandler :: Invalid number of steps recieved from wristband: " + steps.stepsToday());
+                OnERROR(WristbandProtocolError.INVALID_NUMBER_OF_STEPS, "ReadCharacteristicsHandler :: Invalid number of steps recieved from wristband -> All steps cleared!" );
 
                 // TODO: Delay of one second proved to work better in the older version of the sync app
                 // currently removed because i didn't want to start multithreading just yet.

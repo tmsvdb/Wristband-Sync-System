@@ -1,3 +1,5 @@
+#if !UNITY_EDITOR
+
 using Xunit;
 using Xunit.Abstractions;
 using Wristband;
@@ -511,3 +513,4 @@ ReadCharacteristicsHandler(string str, byte[] dat)
         }
     }
 }
+#endif
